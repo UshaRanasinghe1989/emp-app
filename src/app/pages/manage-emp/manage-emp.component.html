@@ -2,20 +2,20 @@
     <form>
         <div class="mb-3 col-6">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName">            
+            <input [(ngModel)]="employee.firstname" type="text" class="form-control" id="firstName" name="firstName">            
         </div>
         <div class="mb-3 col-6">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName">            
+            <input [(ngModel)]="employee.lastname" type="text" class="form-control" id="lastName" name="lastName">            
         </div>
         <div class="mb-3 col-6">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input [(ngModel)]="employee.email" type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3 col-6">
             <label for="depId" class="form-label">Select Department Id</label>
-            <select class="form-select" id="depId">
+            <select [(ngModel)]="employee.depid" class="form-select" id="depId" name="depId">
                 <option selected>Select Id</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3 col-6">
             <label for="roleId" class="form-label">Select Role Id</label>
-            <select class="form-select" id="roleId">
+            <select [(ngModel)]="employee.roleid" class="form-select" id="roleId" name="roleId">
                 <option selected>Select Id</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -32,6 +32,6 @@
               </select>
         </div>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button (click)="saveEmployee()" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
