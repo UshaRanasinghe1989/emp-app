@@ -25,4 +25,10 @@ export class ViewAllEmpComponent implements OnInit {
       }
     )
   }
+
+  public deleteEmployee(employee:any){
+    this.http.delete(`http://localhost:8080/emp-controller/delete-emp/${employee.id}`, {responseType:'text'}).subscribe(res => {
+      this.getAllEmp();
+    })    
+  }
 }
