@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './manage-emp.component.css'
 })
 export class ManageEmpComponent {
-  
+  public employee = {
+    firstname : undefined,
+    lastname : undefined,
+    email : undefined,
+    depid : undefined,
+    roleid : undefined
+  }
 }
