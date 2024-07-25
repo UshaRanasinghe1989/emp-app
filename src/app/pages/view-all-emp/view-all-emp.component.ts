@@ -2,11 +2,12 @@ import { NgFor } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-all-emp',
   standalone: true,
-  imports: [HttpClientModule, NgFor],
+  imports: [HttpClientModule, NgFor, FormsModule],
   templateUrl: './view-all-emp.component.html',
   styleUrl: './view-all-emp.component.css'
 })
@@ -64,5 +65,29 @@ export class ViewAllEmpComponent implements OnInit {
         });
       }
     });      
+  }
+
+  public selectedEmployee = {
+    firstName : undefined,
+    lastName : undefined,
+    email : undefined,
+    depId : undefined,
+    roleId : undefined
+  }
+
+  public getSelectedEmployee(employee:any){
+    this.selectedEmployee = employee;
+  }
+
+  public editEmployee(employee:any){
+    this.http.post(`http://localhost:8080/emp-controller/update-employee/${employee.id}`, this.selectedEmployee).subscribe(
+      (data) => {
+        Swal.fire({
+          title: "Updated Employee",
+          text: "Employee record updated successfully !",
+          icon: "success"
+        });
+      }
+    )
   }
 }

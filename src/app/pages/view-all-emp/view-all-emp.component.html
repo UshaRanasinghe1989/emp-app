@@ -9,6 +9,7 @@
                 <th scope="col">Department Id</th>
                 <th scope="col">Role Id</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +20,57 @@
                 <td>{{employee.email}}</td>
                 <td>{{employee.depId}}</td>
                 <td>{{employee.roleId}}</td>
+                <td><button (click)="getSelectedEmployee(employee)" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="mdo"><i class="bi bi-pen"></i></button></td>
                 <td><button (click)="deleteEmployee(employee)" class="btn btn-danger"><i class="bi bi-trash3"></i></button></td>
             </tr>
         </tbody>
-    </table>
+    </table>    
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Employee</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="firstName" class="col-form-label">First Name</label>
+                        <input [(ngModel)]="selectedEmployee.firstName" type="text" class="form-control" id="firstName" name="firstName" value="selectedEmployee    .firstName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="col-form-label">Last Name</label>
+                        <input [(ngModel)]="selectedEmployee.lastName" type="text" class="form-control" id="lastName" name="lastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="col-form-label">Email</label>
+                        <input [(ngModel)]="selectedEmployee.email" type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="depId" class="col-form-label">Select Department Id</label>
+                        <select [(ngModel)]="selectedEmployee.depId" class="form-select" id="depId" name="depId">
+                            <option selected>Select Id</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roleId" class="col-form-label">Select Role Id</label>
+                        <select [(ngModel)]="selectedEmployee.roleId" class="form-select" id="roleId" name="roleId">
+                            <option selected>Select Id</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="editEmployee(selectedEmployee)" type="button" class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </div>
 </div>
